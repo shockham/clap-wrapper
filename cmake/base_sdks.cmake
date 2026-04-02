@@ -189,10 +189,6 @@ function(guarantee_vst3sdk)
 
 
     if (NOT TARGET vst3_validator)
-        if(MINGW)
-            set(MINGW_VALIDATOR_FLAG -DCMAKE_EXE_LINKER_FLAGS="-municode")
-        endif(MINGW)
-
         add_custom_target(vst3_validator)
         add_custom_command(TARGET vst3_validator
                 POST_BUILD
@@ -210,8 +206,6 @@ function(guarantee_vst3sdk)
                         -DSMTG_ENABLE_VSTGUI_SUPPORT=OFF
                         -DSMTG_ENABLE_VST3_PLUGIN_EXAMPLES=OFF
                         -DSMTG_ENABLE_VST3_HOSTING_EXAMPLES=OFF
-
-                        ${MINGW_VALIDATOR_FLAG}
 
                         -B ${CMAKE_BINARY_DIR}/validator-build
 
