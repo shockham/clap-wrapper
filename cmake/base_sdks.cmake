@@ -190,7 +190,7 @@ function(guarantee_vst3sdk)
 
     if (NOT TARGET vst3_validator)
         if(MINGW)
-            set(MINGW_VALIDATOR_FLAG -DCMAKE_CXX_FLAGS="-mwindows -municode")
+            set(MINGW_VALIDATOR_FLAG -DCMAKE_WIN32_EXECUTABLE=ON)
         endif(MINGW)
 
         add_custom_target(vst3_validator)
