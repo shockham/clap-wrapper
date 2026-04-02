@@ -189,9 +189,9 @@ function(guarantee_vst3sdk)
 
 
     if (NOT TARGET vst3_validator)
-        if(MINGW)
-            set(MINGW_VALIDATOR_FLAG -DCMAKE_CXX_COMPILER="MSVC" -DCMAKE_C_COMPILER="MSVC" -G "Visual Studio 17 2022" -A x64)
-        endif(MINGW)
+        if(MSVC_VST3_VALIDATOR)
+            set(MSVC_VALIDATOR_FLAG -DCMAKE_CXX_COMPILER="MSVC" -DCMAKE_C_COMPILER="MSVC" -G "Visual Studio 17 2022" -A x64)
+        endif()
 
         add_custom_target(vst3_validator)
         add_custom_command(TARGET vst3_validator
@@ -211,7 +211,7 @@ function(guarantee_vst3sdk)
                         -DSMTG_ENABLE_VST3_PLUGIN_EXAMPLES=OFF
                         -DSMTG_ENABLE_VST3_HOSTING_EXAMPLES=OFF
 
-                        ${MINGW_VALIDATOR_FLAG}
+                        ${MSVC_VALIDATOR_FLAG}
 
                         -B ${CMAKE_BINARY_DIR}/validator-build
 
