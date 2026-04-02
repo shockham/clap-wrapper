@@ -189,6 +189,10 @@ function(guarantee_vst3sdk)
 
 
     if (NOT TARGET vst3_validator)
+        if(MINGW)
+            set(MINGW_VALIDATOR_FLAG -DCMAKE_CXX_FLAGS="-mwindows")
+        endif(MINGW)
+
         add_custom_target(vst3_validator)
         add_custom_command(TARGET vst3_validator
                 POST_BUILD
@@ -207,13 +211,12 @@ function(guarantee_vst3sdk)
                         -DSMTG_ENABLE_VST3_PLUGIN_EXAMPLES=OFF
                         -DSMTG_ENABLE_VST3_HOSTING_EXAMPLES=OFF
 
+                        ${MINGW_VALIDATOR_FLAG}
+
                         -B ${CMAKE_BINARY_DIR}/validator-build
 
                 COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR}/validator-build --config Debug --target validator
         )
-        if(MINGW)
-            set_target_properties(vst3_validator PROPERTIES WIN32_EXECUTABLE 1)
-        endif(MINGW)
     endif()
 
 endfunction(guarantee_vst3sdk)
