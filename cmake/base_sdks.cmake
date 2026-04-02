@@ -212,7 +212,7 @@ function(guarantee_vst3sdk)
                 COMMAND ${CMAKE_COMMAND} --build ${CMAKE_BINARY_DIR}/validator-build --config Debug --target validator
         )
         if(MINGW)
-            target_compile_options(vst3_validator PRIVATE -DCMAKE_CXX_FLAGS="-mwindows")
+            set_target_properties(vst3_validator PROPERTIES WIN32_EXECUTABLE 1)
         endif(MINGW)
     endif()
 
