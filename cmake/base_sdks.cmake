@@ -190,7 +190,7 @@ function(guarantee_vst3sdk)
 
     if (NOT TARGET vst3_validator)
         if(MINGW)
-            set(MINGW_VALIDATOR_FLAG -DCMAKE_CXX_COMPILER="MSVC" -DCMAKE_C_COMPILER="MSVC")
+            set(MINGW_VALIDATOR_FLAG -DCMAKE_CXX_COMPILER="MSVC" -DCMAKE_C_COMPILER="MSVC" -G "Visual Studio 17 2022" -A x64)
         endif(MINGW)
 
         add_custom_target(vst3_validator)
