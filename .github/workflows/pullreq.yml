@@ -230,7 +230,7 @@ jobs:
 
 
           - os: windows-latest
-            cmakeargs: -GNinja -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DEXAMPLE_USE_WINDOWS_FOLDER=TRUE
+            cmakeargs: -GNinja -DCMAKE_CXX_COMPILER=g++ -DCMAKE_C_COMPILER=gcc -DEXAMPLE_USE_WINDOWS_FOLDER=TRUE -DCMAKE_CXX_FLAGS="-mwindows" -DCMAKE_C_FLAGS="-mwindows"
             install_ninja: true
             run_aptget: false
             run_validator: true
